@@ -59,15 +59,17 @@ public class StockMarketYear{
 		return startingBalance() - startingPrincipal();
 	}
 
-	public int endingCapitalGains(int capitalGainsTaxRate) {
-		return startingCapitalGains()-capitalGainsWithdrawn()-capitalGainsTaxIncurred(capitalGainsTaxRate)+interestEarned(capitalGainsTaxRate);
-	}
+	/*public int endingCapitalGains(int capitalGainsTaxRate) {
+		return endingBalance(capitalGainsTaxRate)- endingPrincipal();
+		//return startingCapitalGains()-capitalGainsWithdrawn()-capitalGainsTaxIncurred(capitalGainsTaxRate)+interestEarned(capitalGainsTaxRate);
+	}*/
 	public int endingBalance(int capitalGainsTaxRate) {
 		int modifiedStart = startingBalance-totalWithdrawn(capitalGainsTaxRate);
 		return modifiedStart + interestEarned(capitalGainsTaxRate);
 	}
 	public StockMarketYear nextYear(int capitalGainsTaxRate){
-		return new StockMarketYear(this.endingBalance(capitalGainsTaxRate), this.endingPrincipal(),interestRate);		
+		return new StockMarketYear(this.endingBalance(capitalGainsTaxRate), this.endingPrincipal(),this.interestRate
+				());		
 	}
 	
 	}
